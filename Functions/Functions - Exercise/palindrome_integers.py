@@ -1,10 +1,12 @@
 numbers = input().split(", ")
 
 
-def is_palindrome(number):
-    number == number[::-1]
+def palindrome_check():
+    for i in numbers:
+        if i == i[::-1]:
+            print("True")
+        else:
+            print("False")
 
 
-def check_palindrome(numbers):
-    for num in numbers:
-        print(is_palindrome(num))
+palindrome_check()
