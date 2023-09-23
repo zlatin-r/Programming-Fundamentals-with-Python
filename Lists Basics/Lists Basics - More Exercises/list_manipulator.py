@@ -51,7 +51,3 @@ while True:
                 result = filtered_list
             print(result)
             result.clear()
-
-
-
-
