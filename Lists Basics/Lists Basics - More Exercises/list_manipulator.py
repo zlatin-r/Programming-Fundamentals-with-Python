@@ -1,13 +1,11 @@
 initial_list = list(map(int, input().split()))
-max_min_index = 0
-max_min_el = 0
-prev = len(initial_list)
 
 while True:
     command = input().split()
     action = command[0]
 
     if action == 'end':
+        print(initial_list)
         break
 
     elif action == 'exchange':
@@ -26,9 +24,34 @@ while True:
         if not filtered_list:
             print("No matches")
         else:
-            if action == "max":
-                max_min_index = initial_list[::-1].index(max(filtered_list))
+            if command[0] == "max":
+                max_element = max(filtered_list)
+                max_index = len(initial_list) - 1 - initial_list[::-1].index(max_element)
+                print(max_index)
             else:
-                max_min_index = initial_list[::-1].index(min(filtered_list))
-            print(initial_list[::-1].index(len(initial_list) - max_min_index))
-            print(initial_list.index(max_min_index))
+                min_element = min(filtered_list, )
+                min_index = len(initial_list) - 1 - initial_list[::-1].index(min_element)
+                print(min_index)
+    elif action == "first" or action == "last":
+        count = int(command[1])
+        even_odd = command[2]
+        if even_odd == "even":
+            filtered_list = [num for num in initial_list if num % 2 == 0]
+        else:
+            filtered_list = [num for num in initial_list if num % 2 != 0]
+
+        if count > len(initial_list):
+            print("Invalid count")
+        else:
+            if action == "first":
+                result = filtered_list[:count]
+            else:
+                result = filtered_list[-count:]
+            if len(result) < count:
+                result = filtered_list
+            print(result)
+            result.clear()
+
+
+
+
