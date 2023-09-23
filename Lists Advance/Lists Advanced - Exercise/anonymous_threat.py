@@ -21,6 +21,9 @@ if command[0] == "divide":
 
     word = input_line[index]
     list_of_letters = [x for x in word]
+
     if len(list_of_letters) % 2 == 0:
+        for i in range(0, len(list_of_letters), partitions):
+            result += ", ".join(list_of_letters[i:partitions])
 
 print(result)
