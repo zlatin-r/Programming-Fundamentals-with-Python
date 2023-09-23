@@ -32,6 +32,7 @@ while True:
                 min_element = min(filtered_list, )
                 min_index = len(initial_list) - 1 - initial_list[::-1].index(min_element)
                 print(min_index)
+
     elif action == "first" or action == "last":
         count = int(command[1])
         even_odd = command[2]
@@ -39,7 +40,6 @@ while True:
             filtered_list = [num for num in initial_list if num % 2 == 0]
         else:
             filtered_list = [num for num in initial_list if num % 2 != 0]
-
         if count > len(initial_list):
             print("Invalid count")
         else:
