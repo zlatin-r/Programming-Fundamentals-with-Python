@@ -21,7 +21,7 @@ def merge(array):
     return merged_list.split(" ")
 
 
-def divide(array):
+def divide(array):  # ChatGPT
     index = int(command[1])
     partitions = int(command[2])
 
@@ -29,8 +29,8 @@ def divide(array):
     partition_length = len(string) // partitions
     reminder = len(string) % partitions
 
-    new_parts = [string[i: i + partition_length] for i in   # ChatGPT
-                 range(0, len(string), partition_length)]   # ChatGPT
+    new_parts = [string[i: i + partition_length] for i in
+                 range(0, len(string), partition_length)]
     if reminder > 0:
         new_parts[-2] += new_parts[-1]
         new_parts.pop(-1)
