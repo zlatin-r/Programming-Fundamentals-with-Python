@@ -26,7 +26,7 @@ def divide(array):
     index = int(command[1])
     partitions = int(command[2])
 
-    string = input_line[index]
+    string = array[index]
     partition_length = len(string) // partitions
     reminder = len(string) % partitions
 
@@ -42,11 +42,8 @@ while True:
     command = input().split(" ")
     if command[0] == "merge":
         input_line = merge(input_line)
-        print(input_line)
-
     elif command[0] == "divide":
         input_line = divide(input_line)
-        print(divide(input_line))
     elif command[0] == "3:1":
-        print(input_line)
+        print(" ".join(input_line))
         break
