@@ -1,19 +1,27 @@
 input_line = input().split(" ")
 command = input().split(" ")
-result = ""
 
-if command[0] == "merge":
+
+def merge(array):
+    merged_list = ""
     start_index = int(command[1])
     end_index = int(command[2])
 
-    for word in range(len(input_line)):
-        if end_index > len(input_line):
-            end_index = len(input_line)
+    for word in range(len(array)):
+        if end_index > len(array):
+            end_index = len(array)
         else:
             if word == start_index or word <= end_index:
-                result += input_line[word]
+                merged_list += "".join(array[word])
             else:
-                result += ", " + input_line[word]
+                merged_list += " " + "".join(array[word])
+    array = merged_list
+    return array
+
+
+print(merge(input_line))
+print(input_line)
+
 
 if command[0] == "divide":
     index = int(command[1])
