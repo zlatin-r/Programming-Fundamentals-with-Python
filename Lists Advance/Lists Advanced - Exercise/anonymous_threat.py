@@ -6,19 +6,19 @@ def merge(array):
     start_index = int(command[1])
     end_index = int(command[2])
 
-    for word in range(len(array)):
+    for string in range(len(array)):
         if start_index >= len(array):
             merged_list = " ".join(array)
             break
         if end_index > len(array):
             end_index = len(array)
 
-        if start_index <= word <= end_index:
-            merged_list += "".join(array[word])
-        elif word < start_index:
-            merged_list += "".join(array[word]) + " "
+        if start_index <= string <= end_index:
+            merged_list += "".join(array[string])
+        elif string < start_index:
+            merged_list += "".join(array[string]) + " "
         else:
-            merged_list += " " + "".join(array[word])
+            merged_list += " " + "".join(array[string])
     return merged_list.split(" ")
 
 
@@ -34,8 +34,8 @@ def divide(array):
                  range(0, len(string), partition_length)]
     if reminder > 0:
         new_parts[-1] += string[-reminder:]
-    input_line[index:index + 1] = new_parts
-    return input_line
+    array[index:index + 1] = new_parts
+    return array
 
 
 while True:
