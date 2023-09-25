@@ -6,19 +6,19 @@ while len(sequence) > 0:
     index = int(input())
     count = 0
 
-    prev = len(sequence)
-    prev2 = sequence[index]
-
     if index < 0:
         sequence.pop(0)
         sequence.insert(0, sequence[-1])
-    if index > len(sequence):
+        removed_elements += sequence[index - 1]
+        continue
+    if index >= len(sequence):
         sequence.pop(-1)
-        sequence.insert(0, sequence[-1])
+        sequence.append(sequence[0])
+        removed_elements += sequence[index-1]
+        index -= 1
 
     removed_elements += sequence[index]
     element = sequence[index]
-    sequence.pop(index)
 
     for num in sequence:
         if num <= element:
@@ -29,5 +29,6 @@ while len(sequence) > 0:
             num -= element
             sequence[count] = num
             count += 1
+    sequence.pop(index)
 
 print(sequence)
