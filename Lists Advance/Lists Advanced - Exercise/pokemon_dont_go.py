@@ -29,6 +29,7 @@ while len(sequence) > 0:
             num -= element
             sequence[count] = num
             count += 1
+
     sequence.pop(index)
 
 print(sequence)
