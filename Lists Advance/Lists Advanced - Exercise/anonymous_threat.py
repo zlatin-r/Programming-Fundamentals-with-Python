@@ -12,7 +12,6 @@ def merge(array):
             break
         if end_index > len(array):
             end_index = len(array)
-
         if start_index <= string <= end_index:
             merged_list += "".join(array[string])
         elif string < start_index:
@@ -30,10 +29,11 @@ def divide(array):
     partition_length = len(string) // partitions
     reminder = len(string) % partitions
 
-    new_parts = [string[i: i + partition_length] for i in
-                 range(0, len(string), partition_length)]
+    new_parts = [string[i: i + partition_length] for i in   # ChatGPT
+                 range(0, len(string), partition_length)]   # ChatGPT
     if reminder > 0:
-        new_parts[-1] += string[-reminder:]
+        new_parts[-2] += new_parts[-1]
+        new_parts.pop(-1)
     array[index:index + 1] = new_parts
     return array
 
