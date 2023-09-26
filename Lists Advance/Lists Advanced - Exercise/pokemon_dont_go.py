@@ -2,54 +2,40 @@ sequence_int = [int(x) for x in input().split(" ")]
 sum_removed = 0
 
 
-def check_index_negative(index_value, sequence):  # problem
-    if index_value < 0:
-        sequence.pop(0)
-        sequence.append(sequence[-1])
-    return sequence
-
-
-def check_index_positive(index_value, sequence):
-    sequence.pop(-1)
-    sequence.append(sequence[0])
-    global index
-    index = len(sequence) - 1
-    return sequence
-
-
-def remove_element(sequence, element):  # works good
-    sequence.pop(element)
-    return sequence
-
-
-def increase_decrease(sequence):  # works good
-    counter = 0
-    for number in sequence:
-        if number <= element_to_remove:
-            number += element_to_remove
-            sequence[counter] = number
-            counter += 1
-        else:
-            number -= element_to_remove
-            sequence[counter] = number
-            counter += 1
-    return sequence
-
-
 while len(sequence_int) > 0:
     index = int(input())
 
-    check_index_negative(index, sequence_int)
-    if index >= len(sequence_int):
-        check_index_positive(index, sequence_int)
-        element_to_remove = int(sequence_int[index])
-        sum_removed += element_to_remove
-        increase_decrease(sequence_int)
-        continue
+    if index < 0:
+        sequence_int[0] = sequence_int[-1]
+    elif index > len(sequence_int):
+        sequence_int[-1] = sequence_int[0]
+        index = len(sequence_int) - 1
+        element = sequence_int[index]
+        sum_removed += sequence_int[index]
+        counter = 0
+        for num in sequence_int:
+            if num <= element:
+                num += element
+                sequence_int[counter] = num
+                counter += 1
+            else:
+                num -= element
+                sequence_int[counter] = num
+                counter += 1
 
-    element_to_remove = int(sequence_int[index])
-    sum_removed += element_to_remove
-    remove_element(sequence_int, index)
-    increase_decrease(sequence_int)
+    else:
+        element = sequence_int[index]
+        sum_removed += sequence_int[index]
+        counter = 0
+        for num in sequence_int:
+            if num <= element:
+                num += element
+                sequence_int[counter] = num
+                counter += 1
+            else:
+                num -= element
+                sequence_int[counter] = num
+                counter += 1
+        sequence_int.pop(index)
 
 print(sum_removed)
