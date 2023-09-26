@@ -1,22 +1,28 @@
 sequence_int = [int(x) for x in input().split(" ")]
+sum_removed = 0
 
 
-def check_index(index_value, sequence):                     # problem
+def check_index_negative(index_value, sequence):  # problem
     if index_value < 0:
         sequence.pop(0)
         sequence.append(sequence[-1])
-    elif index_value >= len(sequence):
-        sequence.pop(-1)
-        sequence.append(sequence[0])
-    return index_value, sequence
+    return sequence
 
 
-def remove_element(sequence, element):                     # works good
+def check_index_positive(index_value, sequence):
+    sequence.pop(-1)
+    sequence.append(sequence[0])
+    global index
+    index = len(sequence) - 1
+    return sequence
+
+
+def remove_element(sequence, element):  # works good
     sequence.pop(element)
     return sequence
 
 
-def increase_decrease(sequence):                            # works good
+def increase_decrease(sequence):  # works good
     counter = 0
     for number in sequence:
         if number <= element_to_remove:
@@ -30,19 +36,20 @@ def increase_decrease(sequence):                            # works good
     return sequence
 
 
-def sum_removed(element):                             # works good
-    removed_sum = 0
-    removed_sum += element
-    return removed_sum
-
-
-while len(sequence_int) != 0:
+while len(sequence_int) > 0:
     index = int(input())
 
-    check_index(index, sequence_int)
+    check_index_negative(index, sequence_int)
+    if index >= len(sequence_int):
+        check_index_positive(index, sequence_int)
+        element_to_remove = int(sequence_int[index])
+        sum_removed += element_to_remove
+        increase_decrease(sequence_int)
+        continue
 
-    element_to_remove = int(sequence_int[index])    # problem
-
-    sum_removed(element_to_remove)
+    element_to_remove = int(sequence_int[index])
+    sum_removed += element_to_remove
     remove_element(sequence_int, index)
     increase_decrease(sequence_int)
+
+print(sum_removed)
