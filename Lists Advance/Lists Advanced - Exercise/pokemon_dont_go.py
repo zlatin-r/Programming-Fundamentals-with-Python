@@ -4,6 +4,7 @@ sum_of_removed = 0
 
 def increase_decrease(sequence):
     counter = 0
+
     for num in integers:
         if num <= element_to_remove:
             sequence[counter] = num + element_to_remove
@@ -15,7 +16,6 @@ def increase_decrease(sequence):
 
 
 while len(integers) > 0:
-    prev = len(integers)
     index = int(input())
 
     if index < 0:
@@ -23,13 +23,11 @@ while len(integers) > 0:
         index = 0
         element_to_remove = integers[index]
         increase_decrease(integers)
-
     elif index > len(integers) - 1:
         integers[-1] = integers[0]
         index = len(integers) - 1
         element_to_remove = integers[index]
         increase_decrease(integers)
-
     else:
         element_to_remove = integers[index]
         increase_decrease(integers)
