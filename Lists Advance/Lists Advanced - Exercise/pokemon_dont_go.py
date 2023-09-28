@@ -1,41 +1,40 @@
-sequence_int = [int(x) for x in input().split(" ")]
-sum_removed = 0
+integers = [int(x) for x in input().split(" ")]
+sum_of_removed = 0
 
 
-while len(sequence_int) > 0:
+def increase_decrease(sequence):
+    counter = 0
+    for num in integers:
+        if num <= element_to_remove:
+            sequence[counter] = num + element_to_remove
+            counter += 1
+        else:
+            sequence[counter] = num - element_to_remove
+            counter += 1
+    return sequence
+
+
+while len(integers) > 0:
+    prev = len(integers)
     index = int(input())
 
     if index < 0:
-        sequence_int[0] = sequence_int[-1]
-    elif index > len(sequence_int):
-        sequence_int[-1] = sequence_int[0]
-        index = len(sequence_int) - 1
-        element = sequence_int[index]
-        sum_removed += sequence_int[index]
-        counter = 0
-        for num in sequence_int:
-            if num <= element:
-                num += element
-                sequence_int[counter] = num
-                counter += 1
-            else:
-                num -= element
-                sequence_int[counter] = num
-                counter += 1
+        integers[0] = integers[-1]
+        index = 0
+        element_to_remove = integers[index]
+        increase_decrease(integers)
+
+    elif index > len(integers) - 1:
+        integers[-1] = integers[0]
+        index = len(integers) - 1
+        element_to_remove = integers[index]
+        increase_decrease(integers)
 
     else:
-        element = sequence_int[index]
-        sum_removed += sequence_int[index]
-        counter = 0
-        for num in sequence_int:
-            if num <= element:
-                num += element
-                sequence_int[counter] = num
-                counter += 1
-            else:
-                num -= element
-                sequence_int[counter] = num
-                counter += 1
-        sequence_int.pop(index)
+        element_to_remove = integers[index]
+        increase_decrease(integers)
+        integers.pop(index)
 
-print(sum_removed)
+    sum_of_removed += element_to_remove
+
+print(sum_of_removed)
