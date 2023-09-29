@@ -8,7 +8,6 @@ take_list = [number for index, number in enumerate(number_list) if index % 2 == 
 skip_list = [number for index, number in enumerate(number_list) if index % 2 != 0]
 
 count = len(take_list)
-take = [count, ]
 
 while count > 0:
     for m in take_list:
