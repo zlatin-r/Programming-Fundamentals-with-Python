@@ -10,7 +10,6 @@ skip_list = [number for index, number in enumerate(number_list) if index % 2 != 
 count = len(take_list)
 take = [count, ]
 
-
 while count > 0:
     for m in take_list:
         taken_string = non_numbers_list[0:m]
@@ -20,7 +19,6 @@ while count > 0:
         break
 
     for n in skip_list:
-        skipped_string = non_numbers_list[0:n]
         non_numbers_list = non_numbers_list[n:]
         skip_list.remove(n)
         break
