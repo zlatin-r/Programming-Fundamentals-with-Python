@@ -12,15 +12,17 @@ for cabin in lift:
             lift[counter] = 4
         else:
             lift[counter] = total_people
+            total_people = 0
     counter += 1
 
-if set(lift) == 4:
+
+if set(lift) == {4}:
     is_full = True
 
 if total_people == 0 and is_full is False:
     print("The lift has empty spots!")
     print(" ".join([str(x) for x in lift]))
-elif total_people > 0:
+elif total_people > 0 and is_full:
     print(f"There isn't enough space! {total_people} people in a queue!")
     print(" ".join([str(x) for x in lift]))
 else:
