@@ -11,10 +11,9 @@ for cabin in lift:
             people_seated = 4 - cabin
             lift[counter] = 4
         else:
-            lift[counter] = total_people
+            lift[counter] += total_people
             total_people = 0
     counter += 1
-
 
 if set(lift) == {4}:
     is_full = True
