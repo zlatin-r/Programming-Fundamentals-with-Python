@@ -24,4 +24,4 @@ while action != "end":
     command = input().split(" ")
     action = command[0]
 
-print(initial_list)
+print(" ".join(str(x) for x in initial_list))
