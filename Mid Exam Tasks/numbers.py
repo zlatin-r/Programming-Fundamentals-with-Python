@@ -10,8 +10,6 @@ for num in initial_list:
 greater_list.sort(reverse=True)
 
 if len(greater_list) > 0:
-    print(", ".join(str(x) for x in greater_list))
+    print(" ".join(str(x) for x in greater_list[:5]))
 else:
     print("No")
-
-
