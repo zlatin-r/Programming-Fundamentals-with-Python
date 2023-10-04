@@ -14,3 +14,4 @@ while True:
         break
     if won_battles % 3 == 0:
         energy += won_battles
+
