@@ -5,13 +5,14 @@ while True:
     action = command[0]
 
     if action == 'end':
-        print(initial_list)
         break
 
     elif action == 'exchange':
         index = int(command[1])
         if 0 <= index < len(initial_list):
-            initial_list = initial_list[index + 1:] + initial_list[:index + 1]
+            left_sublist = initial_list[:index + 1]
+            right_sublist = initial_list[index + 1:]
+            initial_list = right_sublist + left_sublist
         else:
             print('Invalid index')
 
@@ -24,30 +25,29 @@ while True:
         if not filtered_list:
             print("No matches")
         else:
-            if command[0] == "max":
-                max_element = max(filtered_list)
-                max_index = len(initial_list) - 1 - initial_list[::-1].index(max_element)
-                print(max_index)
+            if action == "max":
+                max_min_index = initial_list.index(max(filtered_list))
+                print(max_min_index)
             else:
-                min_element = min(filtered_list, )
-                min_index = len(initial_list) - 1 - initial_list[::-1].index(min_element)
-                print(min_index)
-
-    elif action == "first" or action == "last":
+                max_min_index = initial_list.index(min(filtered_list))
+                print(max_min_index)
+    elif action in ["first", "last"]:
         count = int(command[1])
         even_odd = command[2]
         if even_odd == "even":
             filtered_list = [num for num in initial_list if num % 2 == 0]
         else:
             filtered_list = [num for num in initial_list if num % 2 != 0]
-        if count > len(initial_list):
+
+        if len(filtered_list) == 0:
+            print(filtered_list)
+        elif count > len(filtered_list):
             print("Invalid count")
         else:
-            if action == "first":
-                result = filtered_list[:count]
-            else:
-                result = filtered_list[-count:]
-            if len(result) < count:
-                result = filtered_list
+            result = filtered_list[:count] if action == "first" else filtered_list[-count:]
             print(result)
-            result.clear()
+
+    elif action == "end":
+        break
+
+print(initial_list)
