@@ -23,9 +23,7 @@ while True:
         end_index = int(command[2])
         damage = int(command[3])
 
-        if 0 <= start_index <= len(war_ship) - 1 and 0 <= end_index <= len(war_ship) - 1:
+        pirate_ship = [num - damage for num in pirate_ship if start_index <= pirate_ship.index(num) <= end_index]
+        xax
 
-
-
-
-print(pirate_ship)
+    print(pirate_ship)
