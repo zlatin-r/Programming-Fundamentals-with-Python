@@ -8,7 +8,10 @@ while True:
     action = command[0]
 
     if action == "Retire":
-        break
+        print(f"Pirate ship status: {sum(pirate_ship)}")
+        print(f"Warship status: {sum(war_ship)}")
+        exit()
+
     elif action == "Fire":
         index = int(command[1])
         damage = int(command[2])
@@ -17,8 +20,7 @@ while True:
             war_ship[index] -= damage
             if war_ship[index] <= 0:
                 print("You won! The enemy ship has sunken.")
-                stalemate = False
-                break
+                exit()
 
     elif action == "Defend":
         start_index = int(command[1])
@@ -30,8 +32,7 @@ while True:
                 pirate_ship[x] -= damage
                 if pirate_ship[x] <= 0:
                     print("You lost! The pirate ship has sunken.")
-                    stalemate = False
-                    break
+                    exit()
 
     elif action == "Repair":
         index = int(command[1])
@@ -39,15 +40,11 @@ while True:
 
         if 0 <= index < len(pirate_ship):
             pirate_ship[index] += health
-            if pirate_ship[index] < max_health:
+            if pirate_ship[index] > max_health:
                 pirate_ship[index] = max_health
 
     elif action == "Status":
         threshold = max_health * 0.20
 
-        sections_for_repair = [section for section in pirate_ship if section > threshold]
+        sections_for_repair = [section for section in pirate_ship if section < threshold]
         print(f"{len(sections_for_repair)} sections need repair.")
-
-if stalemate:
-    print(f"Pirate ship status: {sum(pirate_ship)}")
-    print(f"Warship status: {sum(war_ship)}")
