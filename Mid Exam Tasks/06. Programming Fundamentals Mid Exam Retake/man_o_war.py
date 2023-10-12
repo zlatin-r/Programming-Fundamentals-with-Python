@@ -18,5 +18,12 @@ while True:
                 print("You won! The enemy ship has sunken.")
                 break
 
+    elif action == "Defend":
+        start_index = int(command[1])
+        end_index = int(command[2])
+        damage = int(command[3])
+
+
+
 
 print(pirate_ship)
