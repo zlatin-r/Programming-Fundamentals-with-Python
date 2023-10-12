@@ -1,0 +1,22 @@
+pirate_ship = list(map(int, input().split(">")))
+war_ship = list(map(int, input().split(">")))
+max_health = int(input())
+
+while True:
+    command = input().split()
+    action = command[0]
+
+    if action == "Retire":
+        break
+    elif action == "Fire":
+        index = int(command[1])
+        damage = int(command[2])
+
+        if 0 <= index <= len(war_ship) - 1:
+            war_ship[index] -= damage
+            if war_ship[index] <= 0:
+                print("You won! The enemy ship has sunken.")
+                break
+
+
+print(pirate_ship)
