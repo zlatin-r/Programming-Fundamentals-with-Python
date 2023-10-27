@@ -1,10 +1,10 @@
 class Movie:
     __watched_movies = 0
 
-    def __init__(self, name, director, watched=False):
+    def __init__(self, name, director):
         self.name = name
         self.director = director
-        self.watched = watched
+        self.watched = False
 
     def change_name(self, new_name):
         self.name = new_name
