@@ -7,6 +7,8 @@ while True:
         print("Products in stock:")
         for product in bakery:
             print(f"- {product} {bakery[product]}")
+        # or [print(f"- {product}: {bakery[product]}") for product in bakery]
+
         print(f"Total Products: {len(bakery)}")
         print(f"Total Quantity: {sum(bakery.values())}")
         break
