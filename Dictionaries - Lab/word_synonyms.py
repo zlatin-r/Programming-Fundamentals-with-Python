@@ -10,4 +10,4 @@ for _ in range(n):
     synonyms[key_word].append(synonym)
 
 for word in synonyms:
-    print(f"{word} - {'. '.join(synonyms[word])}")
+    print(f"{word} - {', '.join(synonyms[word])}")
