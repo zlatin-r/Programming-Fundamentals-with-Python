@@ -12,6 +12,9 @@ while command != "End":
 
     command = input()
 
+for company, employees in data.items():
+    print(company.strip())
+    for ID in employees:
+        print(f"-- {ID.strip()}")
 
 
-print(data)
