@@ -14,5 +14,3 @@ while True:
 
 for key, quantity in dictionary.items():
     print(f"{key} -> {quantity}")
-
-
