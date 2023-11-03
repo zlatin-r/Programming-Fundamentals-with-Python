@@ -7,7 +7,7 @@ while command != "End":
     if company_name not in data:
         data[company_name] = []
 
-    if employee_id not in company_name:
+    if employee_id not in data[company_name]:
         data[company_name].append(employee_id)
 
     command = input()
