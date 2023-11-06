@@ -2,14 +2,19 @@ data = {}
 submissions = {}
 command = input()
 user_points = 0
-banned = ""
+
 
 while command != "exam finished":
     command = command.split("-")
 
     if "banned" in command:
         user_name, x = command
-        banned += user_name
+
+        for k, v in data.items():
+            for user in v:
+                if user == user_name:
+                    data[k].pop(user_name)
+                    break
 
     else:
         user_name, language, points = command
@@ -35,8 +40,7 @@ while command != "exam finished":
 print("Results:")
 for k, v in data.items():
     for user, points in v.items():
-        if user not in banned:
-            print(f"{user} | {points}")
+        print(f"{user} | {points}")
 
 print("Submissions:")
 for k, v in submissions.items():
