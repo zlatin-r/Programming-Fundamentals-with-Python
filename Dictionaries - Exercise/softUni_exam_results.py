@@ -1,4 +1,5 @@
 data = {}
+submissions = {}
 command = input()
 user_points = 0
 ban = ""
@@ -11,6 +12,11 @@ while command != "exam finished":
         ban = user_name
     else:
         user_name, language, points = command
+
+        if language not in submissions.keys():
+            submissions[language] = 0
+        submissions[language] += 1
+
         if language not in data.keys():
             data[language] = {}
             data[language][user_name] = int(points)
@@ -30,6 +36,7 @@ for k, v in data.items():
     for user, points in v.items():
         if user != ban:
             print(f"{user} | {points}")
+
 print("Submissions:")
-for k in data.keys():
-    print(f"{k} - {len(v.keys())}")
+for k, v in submissions.items():
+    print(f"{k} - {v}")
