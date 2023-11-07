@@ -18,8 +18,7 @@ while command != "end of submissions":
             part_two_submissions[user_name][contest] = int(points)
         else:
             if contest in part_two_submissions[user_name].keys():
-                if part_two_submissions[user_name][contest] < int(points):
-                    part_two_submissions[user_name][contest] = int(points)
+                part_two_submissions[user_name][contest] = max(int(points), part_two_submissions[user_name][contest])
             else:
                 part_two_submissions[user_name][contest] = int(points)
 
