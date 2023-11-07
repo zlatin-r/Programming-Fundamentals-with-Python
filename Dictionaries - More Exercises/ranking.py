@@ -4,8 +4,6 @@ command = input()
 
 while command != "end of contests":
     contest, password = command.split(":")
-    if contest not in part_one_interviews.keys():
-        part_one_interviews[contest] = ""
     part_one_interviews[contest] = password
     command = input()
 
@@ -30,10 +28,12 @@ while command != "end of submissions":
 best_candidate = max(part_two_submissions.keys())
 max_points = sum(part_two_submissions[best_candidate].values())
 
-print(f"Best candidate is {best_candidate} with total {max_points}")
+print(f"Best candidate is {best_candidate} with total {max_points} points.")
 print("Ranking:")
 
 for candidate, submissions in sorted(part_two_submissions.items()):
     print(candidate)
-    for contest, points in submissions.items():
-        print(f"{contest} -> {points}")
+    sorted_dict = sorted(submissions.items(), key=lambda item: item[1], reverse=True)
+
+    for contest, points in sorted_dict:
+        print(f"#  {contest} -> {points}")
