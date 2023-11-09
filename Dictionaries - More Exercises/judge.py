@@ -1,11 +1,28 @@
 data = {}
+total_points = {}
 data_input = input()
+count = 0
 
 while data_input != "no more time":
     user_name, contest, points = data_input.split(" -> ")
 
-    if user_name not in data:
-        data[user_name] = data.get(user_name, {})
-        data[user_name][contest] = data[user_name].get()
+    if contest not in data:
+        data[contest] = data.get(contest, {})
+    data[contest][user_name] = data[contest].get(user_name, int(points))
+    data[contest][user_name] = max(int(points), data[contest][user_name])
 
     data_input = input()
+
+for contest, user_name in data.items():
+    print(f"{contest}: {len(user_name)} participants")
+    for name, points in user_name.items():
+        count = 1
+        if name not in total_points:
+            total_points[name] = 0
+        total_points[name] += int(points)
+        print(f"{count}. {name} <::> {points}")
+        count += 1
+
+print("Individual standings:")
+for name, points in sorted(total_points.items(), key=lambda item: -item[1]):
+    print(f"{name} -> {points}")
