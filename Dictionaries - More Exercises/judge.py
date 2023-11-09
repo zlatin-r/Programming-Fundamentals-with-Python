@@ -1,5 +1,4 @@
-data = {}
-total_points = {}
+data, total_points = {}, {}
 data_input = input()
 count = 1
 
@@ -14,11 +13,11 @@ while data_input != "no more time":
 
 for contest, user_name in data.items():
     print(f"{contest}: {len(user_name)} participants")
-    for pos, (name, points) in enumerate(sorted(user_name.items(), key=lambda item: -item[1]), 1):
+    for pos, (name, points) in enumerate(sorted(user_name.items(), key=lambda x: (-x[1], x[0])), 1):
         print(f"{pos}. {name} <::> {points}")
         total_points[name] = total_points.get(name, 0) + points
 
 print("Individual standings:")
-for pos, (name, points) in enumerate(sorted(total_points.items(), key=lambda item: -item[1]), 1):
+for pos, (name, points) in enumerate(sorted(total_points.items(), key=lambda x: (-x[1], x[0])), 1):
     print(f"{pos}. {name} -> {points}")
 
