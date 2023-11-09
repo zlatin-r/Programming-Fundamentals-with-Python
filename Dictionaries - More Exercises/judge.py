@@ -1,7 +1,7 @@
 data = {}
 total_points = {}
 data_input = input()
-count = 0
+
 
 while data_input != "no more time":
     user_name, contest, points = data_input.split(" -> ")
@@ -14,9 +14,9 @@ while data_input != "no more time":
     data_input = input()
 
 for contest, user_name in data.items():
+    count = 1
     print(f"{contest}: {len(user_name)} participants")
-    for name, points in user_name.items():
-        count = 1
+    for name, points in sorted(user_name.items(), key=lambda item: -item[1]):
         if name not in total_points:
             total_points[name] = 0
         total_points[name] += int(points)
