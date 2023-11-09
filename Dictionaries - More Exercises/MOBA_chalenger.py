@@ -10,16 +10,16 @@ while data_input != "Season end":
         pool[player][position] = max(int(skill), pool[player][position])
 
     elif "vs" in data_input:
-        player_1, player_2 = data_input.split(" vs ")
+        player1, player2 = data_input.split(" vs ")
 
-        if player_1 in pool.keys() and player_2 in pool.keys():
-            for position_1 in pool[player_1].keys():
-                for position_2 in pool[player_2].keys():
-                    if position_1 == position_2:
-                        if sum(pool[player_1].values()) > sum(pool[player_2].values()):
-                            del pool[player_2]
-                        elif sum(pool[player_1].values()) < sum(pool[player_2].values()):
-                            del pool[player_1]
+        if player1 in pool and player2 in pool:
+            for position, points in pool[player1].items():
+                if position in pool[player2].keys():
+                    if points < pool[player2][position]:
+                        del pool[player1]
+                    elif pool[player2][position] < pool[player1][position]:
+                        del pool[player2]
+                    break
 
     data_input = input()
 
