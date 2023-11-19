@@ -1,6 +1,5 @@
 import re
 
-star_count = r"[star]"
 pattern = r".*@([A-Za-z]+)[^\@\-\!\:\>]*:(\d+)[^\@\-\!\:\>]*\!(A|D)\![^\@\-\!\:\>]*\->(\d+).*"
 
 lines = int(input())
@@ -8,14 +7,10 @@ attacked_planets = []
 destroyed_planets = []
 
 for i in range(lines):
-    decrypted_message = ""
     message = input()
 
-    star_match = re.findall(star_count, message, re.IGNORECASE)
-    decryption_key = int(len(star_match))
-
-    for char in range(len(message)):
-        decrypted_message += chr(ord(message[char]) - decryption_key)
+    decryption_key = sum(message.lower().count(char) for char in "star")
+    decrypted_message = "".join(chr(ord(char) - decryption_key) for char in message)
 
     decrypted_data = re.search(pattern, decrypted_message)
     if decrypted_data:
