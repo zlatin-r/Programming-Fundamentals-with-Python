@@ -18,7 +18,8 @@ while command != "Travel":
 
     elif action == "Remove Stop":
         start_index, end_index = int(command[1]), int(command[2])
-        destinations = destinations[:start_index] + destinations[end_index + 1:]
+        if valid(start_index) and valid(end_index):
+            destinations = destinations[:start_index] + destinations[end_index + 1:]
 
     elif action == "Switch":
         old_string, new_string = command[1], command[2]
