@@ -17,6 +17,7 @@ while data != "end of race":
     data = input()
 
 sorted_results = sorted(results.items(), key=lambda item: item[1], reverse=True)
+
 print(f"1st place: {sorted_results[0][0]}")
 print(f"2nd place: {sorted_results[1][0]}")
 print(f"3rd place: {sorted_results[2][0]}")
