@@ -16,7 +16,6 @@ while line != "end of shift":
     price_match = re.findall(price, line)
 
     if name_match and product_match and count_match and price_match:
-
         bill = float(price_match[0]) * int(count_match[0])
         print(f"{name_match[0]}: {product_match[0]} - {bill:.2f}")
         total_income += bill
