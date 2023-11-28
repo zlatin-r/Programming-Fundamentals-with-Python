@@ -26,4 +26,3 @@ for demon in sorted(demons):
     else:
         damage = 0
     print(f"{demon} - {health} health, {damage:.2f} damage")
-
