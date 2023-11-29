@@ -1,6 +1,5 @@
 num_names = int(input())
-name = ""
-age = ""
+name, age = "", ""
 
 for _ in range(num_names):
     string = input()
