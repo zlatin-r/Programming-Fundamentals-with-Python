@@ -6,10 +6,9 @@ while dwarf_data != "Once upon a time":
 
     if hat_color not in dwarfs:
         dwarfs[hat_color] = {name: int(physics)}
-    elif name not in dwarfs[hat_color]:
+    if name not in dwarfs[hat_color]:
         dwarfs[hat_color][name] = int(physics)
-    else:
-        dwarfs[hat_color][name] = max(int(physics), dwarfs[hat_color][name])
+    dwarfs[hat_color][name] = max(int(physics), dwarfs[hat_color][name])
 
     dwarf_data = input()
 
