@@ -20,4 +20,3 @@ for contest, user_name in data.items():
 print("Individual standings:")
 for pos, (name, points) in enumerate(sorted(total_points.items(), key=lambda x: (-x[1], x[0])), 1):
     print(f"{pos}. {name} -> {points}")
-
