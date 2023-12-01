@@ -1,5 +1,4 @@
 dwarfs = {}
-result = []
 
 dwarf_data = input()
 while dwarf_data != "Once upon a time":
