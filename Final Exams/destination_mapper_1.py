@@ -4,7 +4,7 @@ initial_string = input()
 travel_points = 0
 destinations = []
 
-pattern = r"([=/])([A-Z][a-z]{2,})\1"
+pattern = r"([=/])([A-Z][A-Za-z]{2,})\1"
 
 matches = re.findall(pattern, initial_string)
 
