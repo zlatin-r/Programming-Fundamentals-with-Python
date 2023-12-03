@@ -3,7 +3,6 @@ import re
 n = int(input())
 pattern = r"([|])([A-Z]{4,})\1:([#])([A-Za-z\s]+)\3"
 
-
 for i in range(n):
     data = input()
     match = re.findall(pattern, data)
